@@ -1,5 +1,5 @@
 FROM python
-MAINTAINER Gireesghma Seera
+MAINTAINER Gireeshma Seera
 LABEL This is my first Dockerfile for python application
 EXPOSE 5000
 WORKDIR /myapp
