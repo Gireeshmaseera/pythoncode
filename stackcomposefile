@@ -1,0 +1,43 @@
+services:
+  bus:
+    image: shaikmustafa/dm
+    ports:
+      - "1111:80"
+    deploy:
+      replicas: 2
+    networks:
+      - bus_network
+    volumes:
+      - bus_volume:/usr/share/nginx/html
+  movie:
+    image: shaikmustafa/paytm:movie
+    ports:
+      - "222:80"
+    deploy:
+      replicas: 3
+    networks:
+      - movie_network
+    volumes:
+      - movie_volume:/opt/devops
+  bank:
+    image: shaikmustafa/paytm:bank
+    ports:
+      - "333:80"
+    deploy:
+      replicas: 2
+    networks:
+      - bank_network
+    volumes:
+      - bank_volume:/opt/bankservice
+networks:
+  bus_network:
+    driver: overlay
+  movie_network:
+    driver: overlay
+  bank_network:
+    driver: overlay
+volumes:
+  bus_volume:
+  movie_volume:
+  bank_volume:
+
